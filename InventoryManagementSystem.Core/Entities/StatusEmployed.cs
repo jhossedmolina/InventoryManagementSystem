@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace InventoryManagementSystem.Infraestructure.Migrations;
+﻿namespace InventoryManagementSystem.Core.Entities;
 
 public partial class StatusEmployed
 {

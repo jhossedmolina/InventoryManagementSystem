@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace InventoryManagementSystem.Infraestructure.Migrations;
+﻿namespace IInventoryManagementSystem.Core.Entities;
 
 public partial class Product
 {
