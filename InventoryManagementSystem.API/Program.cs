@@ -1,7 +1,11 @@
+using InventoryManagementSystem.Infraestructure.Migrations;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddDbContext<InventoryManagerContext>(options => 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Server=ASUS-JHOSSED\\SQLEXPRESS;Database=InventoryManager;user=sa;Password=REALG4LIFE")));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
