@@ -1,4 +1,6 @@
-﻿using InventoryManagementSystem.Core.Entities;
+﻿using System;
+using System.Collections.Generic;
+using InventoryManagementSystem.Core.entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace InventoryManagementSystem.Infraestructure.Migrations;
@@ -120,13 +122,20 @@ public partial class InventoryManagerContext : DbContext
             entity.ToTable("Employee");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.ContactNumber)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("contactNumber");
             entity.Property(e => e.DocNumber).HasColumnName("docNumber");
+            entity.Property(e => e.Email)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("email");
             entity.Property(e => e.FirstName)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("firstName");
             entity.Property(e => e.IdDocumentType).HasColumnName("idDocumentType");
-            entity.Property(e => e.IdRoleEmployee).HasColumnName("idRoleEmployee");
             entity.Property(e => e.LastName)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -136,11 +145,6 @@ public partial class InventoryManagerContext : DbContext
                 .HasForeignKey(d => d.IdDocumentType)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Employee_DocumentType");
-
-            entity.HasOne(d => d.IdRoleEmployeeNavigation).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.IdRoleEmployee)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Employee_RoleEmployee");
         });
 
         modelBuilder.Entity<EmployeeUser>(entity =>
@@ -151,6 +155,7 @@ public partial class InventoryManagerContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("id");
             entity.Property(e => e.IdEmployee).HasColumnName("idEmployee");
+            entity.Property(e => e.IdRoleEmployee).HasColumnName("idRoleEmployee");
             entity.Property(e => e.IdStatusEmployed).HasColumnName("idStatusEmployed");
             entity.Property(e => e.Password)
                 .HasMaxLength(20)
@@ -166,9 +171,12 @@ public partial class InventoryManagerContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_EmployeeUser_Employee");
 
+            entity.HasOne(d => d.IdRoleEmployeeNavigation).WithMany(p => p.EmployeeUsers)
+                .HasForeignKey(d => d.IdRoleEmployee)
+                .HasConstraintName("FK_EmployeeUser_RoleEmployee");
+
             entity.HasOne(d => d.IdStatusEmployedNavigation).WithMany(p => p.EmployeeUsers)
                 .HasForeignKey(d => d.IdStatusEmployed)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_EmployeeUser_StatusEmployed");
         });
 
@@ -428,10 +436,7 @@ public partial class InventoryManagerContext : DbContext
             entity.ToTable("StatusEmployed");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Code)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("code");
+            entity.Property(e => e.Code).HasColumnName("code");
             entity.Property(e => e.Name)
                 .HasMaxLength(10)
                 .IsUnicode(false)

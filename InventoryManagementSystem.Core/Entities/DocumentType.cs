@@ -1,4 +1,4 @@
-﻿namespace InventoryManagementSystem.Core.Entities;
+﻿namespace InventoryManagementSystem.Core.entities;
 
 public partial class DocumentType
 {

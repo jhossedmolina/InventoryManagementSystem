@@ -1,4 +1,4 @@
-﻿namespace InventoryManagementSystem.Core.Entities;
+﻿namespace InventoryManagementSystem.Core.entities;
 
 public partial class Employee
 {
@@ -12,11 +12,11 @@ public partial class Employee
 
     public string LastName { get; set; } = null!;
 
-    public int IdRoleEmployee { get; set; }
+    public string? ContactNumber { get; set; }
+
+    public string? Email { get; set; }
 
     public virtual ICollection<EmployeeUser> EmployeeUsers { get; set; } = new List<EmployeeUser>();
 
     public virtual DocumentType IdDocumentTypeNavigation { get; set; } = null!;
-
-    public virtual RoleEmployee IdRoleEmployeeNavigation { get; set; } = null!;
 }

@@ -1,10 +1,10 @@
-﻿namespace InventoryManagementSystem.Core.Entities;
+﻿namespace InventoryManagementSystem.Core.entities;
 
 public partial class StatusEmployed
 {
     public int Id { get; set; }
 
-    public string Code { get; set; } = null!;
+    public int Code { get; set; }
 
     public string Name { get; set; } = null!;
 

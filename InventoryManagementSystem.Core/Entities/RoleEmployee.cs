@@ -1,4 +1,4 @@
-﻿namespace InventoryManagementSystem.Core.Entities;
+﻿namespace InventoryManagementSystem.Core.entities;
 
 public partial class RoleEmployee
 {
@@ -8,5 +8,5 @@ public partial class RoleEmployee
 
     public string Name { get; set; } = null!;
 
-    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
+    public virtual ICollection<EmployeeUser> EmployeeUsers { get; set; } = new List<EmployeeUser>();
 }

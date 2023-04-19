@@ -1,4 +1,5 @@
-﻿namespace InventoryManagementSystem.Core.Entities;
+﻿namespace InventoryManagementSystem.Core.entities;
+
 public partial class OrderHistory
 {
     public int Id { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace IInventoryManagementSystem.Core.Entities;
+﻿namespace InventoryManagementSystem.Core.entities;
 
 public partial class Product
 {
