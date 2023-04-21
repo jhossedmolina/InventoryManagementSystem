@@ -1,6 +1,6 @@
 ﻿namespace InventoryManagementSystem.Core.entities;
 
-public partial class BrandProduct
+public partial class ProductBrand
 {
     public int Id { get; set; }
 

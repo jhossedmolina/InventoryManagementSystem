@@ -17,7 +17,7 @@ public partial class InventoryManagerContext : DbContext
     {
     }
 
-    public virtual DbSet<BrandProduct> BrandProducts { get; set; }
+    public virtual DbSet<ProductBrand> ProductBrands { get; set; }
 
     public virtual DbSet<Client> Clients { get; set; }
 
@@ -55,7 +55,7 @@ public partial class InventoryManagerContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(BrandProductConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProductBrandConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ClientConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(DocumentTypeConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(EmployeeConfiguration).Assembly);
