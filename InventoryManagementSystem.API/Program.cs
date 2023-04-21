@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<InventoryManagerContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("Server=ASUS-JHOSSED\\SQLEXPRESS;Database=InventoryManager;user=sa;Password=REALG4LIFE")));
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
