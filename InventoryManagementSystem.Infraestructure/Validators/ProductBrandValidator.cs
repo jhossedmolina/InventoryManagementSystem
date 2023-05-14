@@ -1,16 +1,16 @@
 ﻿using FluentValidation;
-using InventoryManagementSystem.Core.entities;
+using InventoryManagementSystem.Core.DTOs;
 
 namespace InventoryManagementSystem.Infraestructure.Validators
 {
-    public class ProductBrandValidator : AbstractValidator<ProductBrand>
+    public class ProductBrandValidator : AbstractValidator<ProductBrandDto>
     {
         public ProductBrandValidator()
         {
             RuleFor(x => x.Name)
+                .NotEmpty()
                 .NotNull()
-                .MinimumLength(4)
-                .MaximumLength(50);
+                .Length(4, 50);
         }
     }
 }

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagementSystem.API", "InventoryManagementSystem.API\InventoryManagementSystem.API.csproj", "{08031530-512C-4471-B4DA-46E1CA293BB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagementSystem.API", "InventoryManagementSystem.API\InventoryManagementSystem.API.csproj", "{08031530-512C-4471-B4DA-46E1CA293BB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagementSystem.Core", "InventoryManagementSystem.Core\InventoryManagementSystem.Core.csproj", "{E22A73B3-BC19-44AE-AD75-61DC2054A9B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagementSystem.Core", "InventoryManagementSystem.Core\InventoryManagementSystem.Core.csproj", "{E22A73B3-BC19-44AE-AD75-61DC2054A9B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagementSystem.Infraestructure", "InventoryManagementSystem.Infraestructure\InventoryManagementSystem.Infraestructure.csproj", "{A860D6FA-9C0F-4EDA-9C71-608960C6F98F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagementSystem.Infraestructure", "InventoryManagementSystem.Infraestructure\InventoryManagementSystem.Infraestructure.csproj", "{A860D6FA-9C0F-4EDA-9C71-608960C6F98F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

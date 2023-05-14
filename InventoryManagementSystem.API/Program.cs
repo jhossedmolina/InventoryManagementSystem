@@ -1,18 +1,25 @@
+using FluentValidation;
 using FluentValidation.AspNetCore;
+using InventoryManagementSystem.Core.DTOs;
+using InventoryManagementSystem.Core.Interfaces;
 using InventoryManagementSystem.Infraestructure.Migrations;
+using InventoryManagementSystem.Infraestructure.Repositories;
+using InventoryManagementSystem.Infraestructure.Validators;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<InventoryManagerContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Server=ASUS-JHOSSED\\SQLEXPRESS;Database=InventoryManager;user=sa;Password=REALG4LIFE")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("InventoryManagerDB")));
 builder.Services.AddControllers();
+builder.Services.AddScoped<IProductBrandRepository, ProductBrandRepository>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddScoped<IValidator<ProductBrandDto>, ProductBrandValidator>();
 
 var app = builder.Build();
 
