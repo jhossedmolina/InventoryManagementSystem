@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using InventoryManagementSystem.Core.entities;
+﻿using InventoryManagementSystem.Core.entities;
 using InventoryManagementSystem.Infraestructure.Migrations.Configurations;
 using Microsoft.EntityFrameworkCore;
 

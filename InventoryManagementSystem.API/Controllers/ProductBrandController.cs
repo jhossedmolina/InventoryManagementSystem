@@ -23,7 +23,7 @@ namespace InventoryManagementSystem.API.Controllers
         public async Task<IActionResult> GetProductBrands()
         {
             var productBrands = await _productBrandRepository.GetProductBrands();
-            var productBrandDto = _mapper.Map<IEnumerable<ProductBrand>>(productBrands);
+            var productBrandDto = _mapper.Map<IEnumerable<ProductBrandDto>>(productBrands);
             return Ok(productBrandDto);
         }
 
@@ -31,7 +31,7 @@ namespace InventoryManagementSystem.API.Controllers
         public async Task<IActionResult> GetProductBrand(int id)
         {
             var productBrand = await _productBrandRepository.GetProductBrand(id);
-            var productBrandDto = _mapper.Map<ProductBrand>(productBrand);
+            var productBrandDto = _mapper.Map<ProductBrandDto>(productBrand);
             return Ok(productBrandDto);
         }
 
