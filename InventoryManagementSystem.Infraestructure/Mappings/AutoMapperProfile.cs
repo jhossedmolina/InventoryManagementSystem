@@ -13,6 +13,9 @@ namespace InventoryManagementSystem.Infraestructure.Mappings
 
             CreateMap<DocumentType, DocumentTypeDto>();
             CreateMap<DocumentTypeDto, DocumentType>();
+
+            CreateMap<Employee, EmployeeDto>();
+            CreateMap<EmployeeDto, Employee>();
         }
     }
 }
