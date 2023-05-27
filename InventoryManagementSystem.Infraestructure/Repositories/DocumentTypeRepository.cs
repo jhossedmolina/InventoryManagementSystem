@@ -7,9 +7,9 @@ namespace InventoryManagementSystem.Infraestructure.Repositories
 {
     public class DocumentTypeRepository : IDocumentTypeRepository
     {
-        private readonly InventoryManagerContext _context;
+        private readonly InventoryManagerSystemDbContext _context;
 
-        public DocumentTypeRepository(InventoryManagerContext context)
+        public DocumentTypeRepository(InventoryManagerSystemDbContext context)
         {
             _context = context;
         }

@@ -4,18 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InventoryManagementSystem.Infraestructure.Migrations;
 
-public partial class InventoryManagerContext : DbContext
+public partial class InventoryManagerSystemDbContext : DbContext
 {
-    public InventoryManagerContext()
+    public InventoryManagerSystemDbContext()
     {
     }
 
-    public InventoryManagerContext(DbContextOptions<InventoryManagerContext> options)
+    public InventoryManagerSystemDbContext(DbContextOptions<InventoryManagerSystemDbContext> options)
         : base(options)
     {
     }
-
-    public virtual DbSet<ProductBrand> ProductBrands { get; set; }
 
     public virtual DbSet<Client> Clients { get; set; }
 
@@ -36,6 +34,8 @@ public partial class InventoryManagerContext : DbContext
     public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
+
+    public virtual DbSet<ProductBrand> ProductBrands { get; set; }
 
     public virtual DbSet<ProductCategory> ProductCategories { get; set; }
 

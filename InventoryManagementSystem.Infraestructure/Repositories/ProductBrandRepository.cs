@@ -7,9 +7,9 @@ namespace InventoryManagementSystem.Infraestructure.Repositories
 {
     public class ProductBrandRepository : IProductBrandRepository
     {
-        private readonly InventoryManagerContext _context;
+        private readonly InventoryManagerSystemDbContext _context;
 
-        public ProductBrandRepository(InventoryManagerContext context)
+        public ProductBrandRepository(InventoryManagerSystemDbContext context)
         {
             _context = context;
         }

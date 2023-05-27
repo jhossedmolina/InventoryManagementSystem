@@ -7,9 +7,9 @@ namespace InventoryManagementSystem.Infraestructure.Repositories
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        private readonly InventoryManagerContext _context;
+        private readonly InventoryManagerSystemDbContext _context;
 
-        public EmployeeRepository(InventoryManagerContext context)
+        public EmployeeRepository(InventoryManagerSystemDbContext context)
         {
             _context = context;
         }
