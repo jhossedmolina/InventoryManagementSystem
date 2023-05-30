@@ -7,6 +7,8 @@ using InventoryManagementSystem.Infraestructure.Repositories;
 using InventoryManagementSystem.Infraestructure.Validators;
 using Microsoft.EntityFrameworkCore;
 
+var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,6 +25,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddScoped<IValidator<ProductBrandDto>, ProductBrandValidator>();
+builder.Services.AddScoped<IValidator<ClientDto>, ClientValidator>();
+builder.Services.AddScoped<IValidator<EmployeeDto>, EmployeeValidator>();
+builder.Services.AddScoped<IValidator<DocumentTypeDto>, DocumentTypeValidator>();
+
+builder.Services.AddCors(options => options.AddPolicy(myAllowSpecificOrigins, builder =>
+{
+    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+}));
 
 var app = builder.Build();
 
