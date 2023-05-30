@@ -19,6 +19,7 @@ builder.Services.AddScoped<IProductBrandRepository, ProductBrandRepository>();
 builder.Services.AddScoped<IDocumentTypeRepository, DocumentTypeRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<IRoleEmployeeRepository, RoleEmployeeRepository>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -28,6 +29,7 @@ builder.Services.AddScoped<IValidator<ProductBrandDto>, ProductBrandValidator>()
 builder.Services.AddScoped<IValidator<ClientDto>, ClientValidator>();
 builder.Services.AddScoped<IValidator<EmployeeDto>, EmployeeValidator>();
 builder.Services.AddScoped<IValidator<DocumentTypeDto>, DocumentTypeValidator>();
+builder.Services.AddScoped<IValidator<RoleEmployeeDto>, RoleEmployeeValidator>();
 
 builder.Services.AddCors(options => options.AddPolicy(myAllowSpecificOrigins, builder =>
 {

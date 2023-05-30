@@ -19,6 +19,10 @@ namespace InventoryManagementSystem.Infraestructure.Mappings
 
             CreateMap<Client, ClientDto>();
             CreateMap<ClientDto, Client>();
+
+            CreateMap<RoleEmployeeDto, RoleEmployee>();
+            CreateMap<RoleEmployee, RoleEmployeeDto>();
+
         }
     }
 }
