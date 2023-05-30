@@ -1,6 +1,6 @@
 ﻿namespace InventoryManagementSystem.Core.DTOs
 {
-    public class EmployeeDto
+    public class ClientDto
     {
         public int Id { get; set; }
 
@@ -14,6 +14,8 @@
 
         public string ContactNumber { get; set; } = null!;
 
-        public string? Email { get; set; }
+        public string Address { get; set; } = null!;
+
+        public int IdMunicipalityCountry { get; set; }
     }
 }
