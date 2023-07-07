@@ -17,6 +17,9 @@ namespace InventoryManagementSystem.Infraestructure.Mappings
             CreateMap<Employee, EmployeeDto>();
             CreateMap<EmployeeDto, Employee>();
 
+            CreateMap<EmployeeUserDto, EmployeeUser>();
+            CreateMap<EmployeeUser, EmployeeUserDto>();
+
             CreateMap<Client, ClientDto>();
             CreateMap<ClientDto, Client>();
 

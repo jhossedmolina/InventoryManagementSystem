@@ -10,19 +10,19 @@ namespace InventoryManagementSystem.API.Controllers
     [ApiController]
     public class ProductBrandController : ControllerBase
     {
-        private readonly IProductBrandRepository _productBrandRepository;
+        private readonly IProductBrandService _productBrandService;
         private readonly IMapper _mapper;
 
-        public ProductBrandController(IProductBrandRepository productBrandRepository, IMapper mapper)
+        public ProductBrandController(IProductBrandService productBrandService, IMapper mapper)
         {
-            _productBrandRepository = productBrandRepository;
+            _productBrandService = productBrandService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetProductBrands()
         {
-            var productBrands = await _productBrandRepository.GetProductBrands();
+            var productBrands = _productBrandService.GetAllProductBrands();
             var productBrandDto = _mapper.Map<IEnumerable<ProductBrandDto>>(productBrands);
             return Ok(productBrandDto);
         }
@@ -30,7 +30,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductBrand(int id)
         {
-            var productBrand = await _productBrandRepository.GetProductBrand(id);
+            var productBrand = await _productBrandService.GetProductBrandById(id);
             var productBrandDto = _mapper.Map<ProductBrandDto>(productBrand);
             return Ok(productBrandDto);
         }
@@ -39,7 +39,7 @@ namespace InventoryManagementSystem.API.Controllers
         public async Task<IActionResult> PostProductBrand(ProductBrandDto productBrandDto)
         {
             var productBrand = _mapper.Map<ProductBrand>(productBrandDto);
-            await _productBrandRepository.InsertProductBrand(productBrand);
+            await _productBrandService.InsertProductBrand(productBrand);
             productBrandDto = _mapper.Map<ProductBrandDto>(productBrand);
             return Ok(productBrandDto);
         }
@@ -49,7 +49,7 @@ namespace InventoryManagementSystem.API.Controllers
         {
             var productBrand = _mapper.Map<ProductBrand>(productBrandDto);
             productBrand.Id = id;
-            await _productBrandRepository.UpdateProuctBrand(productBrand);
+            await _productBrandService.UpdateProductBrand(productBrand);
             productBrandDto = _mapper.Map<ProductBrandDto>(productBrand);
             return Ok(productBrandDto);
         }
@@ -57,7 +57,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductBrand(int id)
         {
-            var result = await _productBrandRepository.DeleteProductBrand(id);
+            var result = await _productBrandService.DeleteProductBrand(id);
             return Ok(result);
         }
 
