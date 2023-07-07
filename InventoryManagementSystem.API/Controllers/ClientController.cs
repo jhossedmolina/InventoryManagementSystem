@@ -10,19 +10,19 @@ namespace InventoryManagementSystem.API.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        private readonly IClientRepository _clientRepository;
+        private readonly IClientService _clientService;
         private readonly IMapper _mapper;
 
-        public ClientController(IClientRepository clientRepository, IMapper mapper)
+        public ClientController(IClientService clientService, IMapper mapper)
         {
-            _clientRepository = clientRepository;
+            _clientService = clientService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetClients()
         {
-            var clients = await _clientRepository.GetClients();
+            var clients = _clientService.GetAllClients();
             var clientsDto = _mapper.Map<IEnumerable<ClientDto>>(clients);
             return Ok(clientsDto);
         }
@@ -30,7 +30,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetClient(int id)
         {
-            var client = await _clientRepository.GetClient(id);
+            var client = await _clientService.GetClientById(id);
             var clientDto = _mapper.Map<ClientDto>(client);
             return Ok(clientDto);
         }
@@ -39,7 +39,7 @@ namespace InventoryManagementSystem.API.Controllers
         public async Task<IActionResult> PostClients(ClientDto clientDto)
         {
             var client = _mapper.Map<Client>(clientDto);
-            await _clientRepository.InsertClient(client);
+            await _clientService.InsertClient(client);
             clientDto = _mapper.Map<ClientDto>(client);
             return Ok(clientDto);
         }
@@ -49,7 +49,7 @@ namespace InventoryManagementSystem.API.Controllers
         {
             var client = _mapper.Map<Client>(clientDto);
             client.Id = id;
-            await _clientRepository.UpdateClient(client);
+            await _clientService.UpdateClient(client);
             clientDto = _mapper.Map<ClientDto>(client);
             return Ok(clientDto);
         }
@@ -57,7 +57,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteClient(int id)
         {
-            var result = await _clientRepository.DeleteClient(id);
+            var result = await _clientService.DeleteClient(id);
             return Ok(result);
         }
     }

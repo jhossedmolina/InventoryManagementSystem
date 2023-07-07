@@ -10,13 +10,13 @@ public partial class EmployeeUser
 
     public int IdEmployee { get; set; }
 
-    public int? IdRoleEmployee { get; set; }
+    public int IdRoleEmployee { get; set; }
 
-    public int? IdStatusEmployed { get; set; }
+    public int IdStatusEmployed { get; set; }
 
     public virtual Employee IdEmployeeNavigation { get; set; } = null!;
 
-    public virtual RoleEmployee? IdRoleEmployeeNavigation { get; set; }
+    public virtual RoleEmployee IdRoleEmployeeNavigation { get; set; } = null!;
 
-    public virtual StatusEmployed? IdStatusEmployedNavigation { get; set; }
+    public virtual StatusEmployed IdStatusEmployedNavigation { get; set; } = null!;
 }

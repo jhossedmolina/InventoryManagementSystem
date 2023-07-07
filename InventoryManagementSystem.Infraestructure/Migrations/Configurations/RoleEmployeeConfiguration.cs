@@ -15,7 +15,7 @@ namespace InventoryManagementSystem.Infraestructure.Migrations.Configurations
                 .HasColumnName("id");
             builder.Property(e => e.Code)
                 .HasMaxLength(5)
-                .IsFixedLength()
+                .IsUnicode(false)
                 .HasColumnName("code");
             builder.Property(e => e.Name)
                 .HasMaxLength(10)

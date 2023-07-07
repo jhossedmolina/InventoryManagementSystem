@@ -10,19 +10,19 @@ namespace InventoryManagementSystem.API.Controllers
     [ApiController]
     public class DocumentTypeController : ControllerBase
     {
-        private readonly IDocumentTypeRepository _documentTypeRepository;
+        private readonly IDocumentTypeService _documentTypeService;
         private readonly IMapper _mapper;
 
-        public DocumentTypeController(IDocumentTypeRepository documentTypeRepository, IMapper mapper)
+        public DocumentTypeController(IDocumentTypeService documentTypeService, IMapper mapper)
         {
-            _documentTypeRepository = documentTypeRepository;
+            _documentTypeService = documentTypeService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetDocumentTypes()
         {
-            var documentTypes = await _documentTypeRepository.GetDocumentTypes();
+            var documentTypes = _documentTypeService.GetDocumentTypes();
             var documentTypesDto = _mapper.Map<IEnumerable<DocumentTypeDto>>(documentTypes);
             return Ok(documentTypesDto);
         }
@@ -30,7 +30,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDocumentType(int id)
         {
-            var documentType = await _documentTypeRepository.GetDocumentType(id);
+            var documentType = await _documentTypeService.GetDocumentType(id);
             var documentTypeDto = _mapper.Map<DocumentTypeDto>(documentType);
             return Ok(documentTypeDto);
         }
@@ -39,7 +39,7 @@ namespace InventoryManagementSystem.API.Controllers
         public async Task<IActionResult> PosDocumentType(DocumentTypeDto documentTypeDto)
         {
             var documentType = _mapper.Map<DocumentType>(documentTypeDto);
-            await _documentTypeRepository.InsertDocumentType(documentType);
+            await _documentTypeService.InsertDocumentType(documentType);
             documentTypeDto = _mapper.Map<DocumentTypeDto>(documentType);
             return Ok(documentTypeDto);
         }
@@ -49,7 +49,7 @@ namespace InventoryManagementSystem.API.Controllers
         {
             var documentType = _mapper.Map<DocumentType>(documentTypeDto);
             documentType.Id = id;
-            await _documentTypeRepository.UpdateDocumentType(documentType);
+            await _documentTypeService.UpdateDocumentType(documentType);
             documentTypeDto = _mapper.Map<DocumentTypeDto>(documentType);
             return Ok(documentTypeDto);
         }
@@ -57,7 +57,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpDelete("{id}")]
         public async Task <IActionResult> DeleteDocumentType(int id)
         {
-            var result = await _documentTypeRepository.DeleteDocumentType(id);
+            var result = await _documentTypeService.DeleteDocumentType(id);
             return Ok(result);
         }
     }

@@ -13,7 +13,8 @@ namespace InventoryManagementSystem.Infraestructure.Migrations.Configurations
             builder.Property(e => e.Id).HasColumnName("id");
             builder.Property(e => e.Address)
                 .HasMaxLength(50)
-                .IsUnicode(false);
+                .IsUnicode(false)
+                .HasColumnName("address");
             builder.Property(e => e.ContactNumber)
                 .HasMaxLength(20)
                 .IsUnicode(false)

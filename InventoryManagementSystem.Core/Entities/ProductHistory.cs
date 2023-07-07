@@ -10,15 +10,13 @@ public partial class ProductHistory
 
     public DateTime UpdateDate { get; set; }
 
-    public int IdProduct { get; set; }
+    public int IdProductStock { get; set; }
 
-    public int? IdProductStock { get; set; }
+    public int IdOrderDetail { get; set; }
 
-    public int? IdOrderDetail { get; set; }
-
-    public virtual OrderDetail? IdOrderDetailNavigation { get; set; }
+    public virtual OrderDetail IdOrderDetailNavigation { get; set; } = null!;
 
     public virtual ProductMovement IdProductMovementNavigation { get; set; } = null!;
 
-    public virtual ProductStock? IdProductStockNavigation { get; set; }
+    public virtual ProductStock IdProductStockNavigation { get; set; } = null!;
 }

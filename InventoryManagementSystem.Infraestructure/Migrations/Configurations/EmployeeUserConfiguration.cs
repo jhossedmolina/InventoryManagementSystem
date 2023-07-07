@@ -32,10 +32,12 @@ namespace InventoryManagementSystem.Infraestructure.Migrations.Configurations
 
             builder.HasOne(d => d.IdRoleEmployeeNavigation).WithMany(p => p.EmployeeUsers)
                 .HasForeignKey(d => d.IdRoleEmployee)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_EmployeeUser_RoleEmployee");
 
             builder.HasOne(d => d.IdStatusEmployedNavigation).WithMany(p => p.EmployeeUsers)
                 .HasForeignKey(d => d.IdStatusEmployed)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_EmployeeUser_StatusEmployed");
         }
     }

@@ -15,16 +15,10 @@ namespace InventoryManagementSystem.Infraestructure.Migrations.Configurations
                 .HasMaxLength(5)
                 .IsUnicode(false)
                 .HasColumnName("code");
-            builder.Property(e => e.IdProductBrand).HasColumnName("idProductBrand");
             builder.Property(e => e.Name)
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("name");
-
-            builder.HasOne(d => d.IdProductBrandNavigation).WithMany(p => p.ProductCategories)
-                .HasForeignKey(d => d.IdProductBrand)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_ProductCategory_ProductBrand");
         }
     }
 }

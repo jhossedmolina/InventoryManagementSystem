@@ -25,6 +25,7 @@ namespace InventoryManagementSystem.Infraestructure.Migrations.Configurations
 
             builder.HasOne(d => d.IdOrderDetailNavigation).WithMany(p => p.OrderHistories)
                 .HasForeignKey(d => d.IdOrderDetail)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_OrderHistory_OrderDetail");
 
             builder.HasOne(d => d.IdOrderSatusNavigation).WithMany(p => p.OrderHistories)

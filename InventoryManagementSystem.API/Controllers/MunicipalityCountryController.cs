@@ -10,19 +10,19 @@ namespace InventoryManagementSystem.API.Controllers
     [ApiController]
     public class MunicipalityCountryController : ControllerBase
     {
-        private readonly IMunicipalityCountryRepository _municipalityCountryRepository;
+        private readonly IMunicipalityCountryService _municipalityCountryService;
         private readonly IMapper _mapper;
 
-        public MunicipalityCountryController(IMunicipalityCountryRepository municipalityCountryRepository, IMapper mapper)
+        public MunicipalityCountryController(IMunicipalityCountryService municipalityCountryService, IMapper mapper)
         {
-            _municipalityCountryRepository = municipalityCountryRepository;
+            _municipalityCountryService = municipalityCountryService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetMunicipalitiesCountry()
         {
-            var municipalitiesCountry = await _municipalityCountryRepository.GetMunicipalitiesCountry();
+            var municipalitiesCountry = _municipalityCountryService.GetAllMunicipalityCountries();
             var municipalitiesCountryDto = _mapper.Map<IEnumerable<MunicipalityCountryDto>>(municipalitiesCountry);
             return Ok(municipalitiesCountryDto);
         }
@@ -30,7 +30,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMunicipalityCountry(int id)
         {
-            var municipalityCountry = await _municipalityCountryRepository.GetMunicipalityCountry(id);
+            var municipalityCountry = await _municipalityCountryService.GetMunicipalityCountry(id);
             var municipalityCountryDto = _mapper.Map<MunicipalityCountryDto>(municipalityCountry);
             return Ok(municipalityCountryDto);
         }
@@ -39,7 +39,7 @@ namespace InventoryManagementSystem.API.Controllers
         public async Task<IActionResult> PostMunicipalityCountry(MunicipalityCountryDto municipalityCountryDto)
         {
             var municipalityCountry = _mapper.Map<MunicipalityCountry>(municipalityCountryDto);
-            await _municipalityCountryRepository.InsertMunicipalityCountry(municipalityCountry);
+            await _municipalityCountryService.InsertMunicipalityCountry(municipalityCountry);
             municipalityCountryDto = _mapper.Map<MunicipalityCountryDto>(municipalityCountry);
             return Ok(municipalityCountryDto);
         }
@@ -49,7 +49,7 @@ namespace InventoryManagementSystem.API.Controllers
         {
             var municipalityCountry = _mapper.Map<MunicipalityCountry>(municipalityCountryDto);
             municipalityCountry.Id = id;
-            await _municipalityCountryRepository.UpdateMunicipalityCountry(municipalityCountry);
+            await _municipalityCountryService.UpdateMunicipalityCountry(municipalityCountry);
             municipalityCountryDto = _mapper.Map<MunicipalityCountryDto>(municipalityCountry);
             return Ok(municipalityCountryDto);
         }
@@ -57,7 +57,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMunicipalityCountry(int id)
         {
-            var result = _municipalityCountryRepository.DeleteMunicipalityCountry(id);
+            var result = _municipalityCountryService.DeleteMunicipalityCountry(id);
             return Ok(result);
         }
     }

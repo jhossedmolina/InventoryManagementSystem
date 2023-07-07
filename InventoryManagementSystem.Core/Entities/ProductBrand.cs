@@ -6,5 +6,7 @@ public partial class ProductBrand
 
     public string Name { get; set; } = null!;
 
-    public virtual ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
+    public int IdProductCategory { get; set; }
+
+    public virtual ProductCategory IdProductCategoryNavigation { get; set; } = null!;
 }

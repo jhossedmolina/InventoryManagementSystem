@@ -10,19 +10,19 @@ namespace InventoryManagementSystem.API.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeService _employeeService;
         private readonly IMapper _mapper;
 
-        public EmployeeController(IEmployeeRepository employeeRepository, IMapper mapper)
+        public EmployeeController(IEmployeeService employeeService, IMapper mapper)
         {
-            _employeeRepository = employeeRepository;
+            _employeeService = employeeService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetEmployees()
         {
-            var employees = await _employeeRepository.GetEmployees();
+            var employees = _employeeService.GetAllEmployees();
             var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(employees);
             return Ok(employeesDto);
         }
@@ -30,7 +30,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmployee(int id)
         {
-            var employee = await _employeeRepository.GetEmployee(id);
+            var employee = await _employeeService.GetEmployeeById(id);
             var employeeDto = _mapper.Map<EmployeeDto>(employee);
             return Ok(employeeDto);
         }
@@ -39,7 +39,7 @@ namespace InventoryManagementSystem.API.Controllers
         public async Task<IActionResult> PostEmployee(EmployeeDto employeeDto)
         {
             var employee = _mapper.Map<Employee>(employeeDto);
-            await _employeeRepository.InsertEmployee(employee);
+            await _employeeService.InsertEmployee(employee);
             employeeDto = _mapper.Map<EmployeeDto>(employee);
             return Ok(employeeDto);
         }
@@ -49,7 +49,7 @@ namespace InventoryManagementSystem.API.Controllers
         {
             var employee = _mapper.Map<Employee>(employeeDto);
             employee.Id = id;
-            await _employeeRepository.UpdateEmployee(employee);
+            await _employeeService.UpdateEmployee(employee);
             employeeDto = _mapper.Map<EmployeeDto>(employeeDto);
             return Ok(employeeDto);
         }
@@ -57,7 +57,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
-            var result = await _employeeRepository.DeleteEmployee(id);
+            var result = await _employeeService.DeleteEmployee(id);
             return Ok(result);
         }
     }

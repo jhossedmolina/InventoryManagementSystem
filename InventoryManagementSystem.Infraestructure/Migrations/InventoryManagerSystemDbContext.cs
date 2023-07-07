@@ -70,7 +70,7 @@ public partial class InventoryManagerSystemDbContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProductStockConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(RoleEmployeeConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(StateCountryConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(StatusEmployed).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(StatusEmployedConfiguration).Assembly);
 
         OnModelCreatingPartial(modelBuilder);
     }

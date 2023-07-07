@@ -12,7 +12,7 @@ public partial class Employee
 
     public string LastName { get; set; } = null!;
 
-    public string ContactNumber { get; set; }
+    public string ContactNumber { get; set; } = null!;
 
     public string? Email { get; set; }
 

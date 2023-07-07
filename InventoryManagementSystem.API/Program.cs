@@ -7,7 +7,7 @@ using InventoryManagementSystem.Infraestructure.Repositories;
 using InventoryManagementSystem.Infraestructure.Validators;
 using Microsoft.EntityFrameworkCore;
 
-var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
+var _myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,12 +15,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<InventoryManagerSystemDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("InventoryManagerDB")));
 builder.Services.AddControllers();
-builder.Services.AddScoped<IProductBrandRepository, ProductBrandRepository>();
-builder.Services.AddScoped<IDocumentTypeRepository, DocumentTypeRepository>();
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-builder.Services.AddScoped<IClientRepository, ClientRepository>();
-builder.Services.AddScoped<IRoleEmployeeRepository, RoleEmployeeRepository>();
-builder.Services.AddScoped<IMunicipalityCountryRepository, MunicipalityCountryRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -33,7 +30,7 @@ builder.Services.AddScoped<IValidator<DocumentTypeDto>, DocumentTypeValidator>()
 builder.Services.AddScoped<IValidator<RoleEmployeeDto>, RoleEmployeeValidator>();
 builder.Services.AddScoped<IValidator<MunicipalityCountryDto>, MunicipalityCountryValidator>();
 
-builder.Services.AddCors(options => options.AddPolicy(myAllowSpecificOrigins, builder =>
+builder.Services.AddCors(options => options.AddPolicy(name: _myAllowSpecificOrigins, builder =>
 {
     builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 }));
@@ -48,6 +45,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(_myAllowSpecificOrigins);
 
 app.UseAuthorization();
 

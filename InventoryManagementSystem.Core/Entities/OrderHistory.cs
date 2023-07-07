@@ -10,9 +10,9 @@ public partial class OrderHistory
 
     public DateTime UpdateDate { get; set; }
 
-    public int? IdOrderDetail { get; set; }
+    public int IdOrderDetail { get; set; }
 
-    public virtual OrderDetail? IdOrderDetailNavigation { get; set; }
+    public virtual OrderDetail IdOrderDetailNavigation { get; set; } = null!;
 
     public virtual Order IdOrderNavigation { get; set; } = null!;
 

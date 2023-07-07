@@ -2,11 +2,11 @@
 
 namespace InventoryManagementSystem.Core.Interfaces
 {
-    public interface IMunicipalityCountryRepository
+    public interface IMunicipalityCountryService
     {
-        Task<IEnumerable<MunicipalityCountry>> GetMunicipalitiesCountry();
+        IEnumerable<MunicipalityCountry> GetAllMunicipalityCountries();
         Task<MunicipalityCountry> GetMunicipalityCountry(int id);
-        Task InsertMunicipalityCountry(MunicipalityCountry municipalityCountry);
+        Task InsertMunicipalityCountry(MunicipalityCountry country);
         Task<bool> UpdateMunicipalityCountry(MunicipalityCountry municipalityCountry);
         Task<bool> DeleteMunicipalityCountry(int id);
     }

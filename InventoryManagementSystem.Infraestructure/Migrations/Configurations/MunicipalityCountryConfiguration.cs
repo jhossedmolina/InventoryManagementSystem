@@ -11,15 +11,15 @@ namespace InventoryManagementSystem.Infraestructure.Migrations.Configurations
             builder.ToTable("MunicipalityCountry");
 
             builder.Property(e => e.Id).HasColumnName("id");
+            builder.Property(e => e.Code)
+                .HasMaxLength(5)
+                .IsUnicode(false)
+                .HasColumnName("code");
             builder.Property(e => e.IdStateCountry).HasColumnName("idStateCountry");
             builder.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("name");
-            builder.Property(e => e.Code)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("code");
 
             builder.HasOne(d => d.IdStateCountryNavigation).WithMany(p => p.MunicipalityCountries)
                 .HasForeignKey(d => d.IdStateCountry)

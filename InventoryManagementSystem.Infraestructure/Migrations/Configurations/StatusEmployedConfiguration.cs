@@ -11,7 +11,10 @@ namespace InventoryManagementSystem.Infraestructure.Migrations.Configurations
             builder.ToTable("StatusEmployed");
 
             builder.Property(e => e.Id).HasColumnName("id");
-            builder.Property(e => e.Code).HasColumnName("code");
+            builder.Property(e => e.Code)
+                .HasMaxLength(5)
+                .IsUnicode(false)
+                .HasColumnName("code");
             builder.Property(e => e.Name)
                 .HasMaxLength(10)
                 .IsUnicode(false)

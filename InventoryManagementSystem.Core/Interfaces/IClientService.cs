@@ -2,10 +2,10 @@
 
 namespace InventoryManagementSystem.Core.Interfaces
 {
-    public interface IClientRepository
+    public interface IClientService
     {
-        Task<IEnumerable<Client>> GetClients();
-        Task<Client> GetClient(int id);
+        IEnumerable<Client> GetAllClients();
+        Task<Client> GetClientById(int id);
         Task InsertClient(Client client);
         Task<bool> UpdateClient(Client client);
         Task<bool> DeleteClient(int id);

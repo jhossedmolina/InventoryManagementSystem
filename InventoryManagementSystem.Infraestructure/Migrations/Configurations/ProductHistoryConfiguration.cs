@@ -14,7 +14,6 @@ namespace InventoryManagementSystem.Infraestructure.Migrations.Configurations
 
             builder.Property(e => e.Id).HasColumnName("id");
             builder.Property(e => e.IdOrderDetail).HasColumnName("idOrderDetail");
-            builder.Property(e => e.IdProduct).HasColumnName("idProduct");
             builder.Property(e => e.IdProductMovement).HasColumnName("idProductMovement");
             builder.Property(e => e.IdProductStock).HasColumnName("idProductStock");
             builder.Property(e => e.QuantityProduct).HasColumnName("quantityProduct");
@@ -24,6 +23,7 @@ namespace InventoryManagementSystem.Infraestructure.Migrations.Configurations
 
             builder.HasOne(d => d.IdOrderDetailNavigation).WithMany(p => p.ProductHistories)
                 .HasForeignKey(d => d.IdOrderDetail)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_InventoryMaterial_OrderDetails");
 
             builder.HasOne(d => d.IdProductMovementNavigation).WithMany(p => p.ProductHistories)
@@ -33,6 +33,7 @@ namespace InventoryManagementSystem.Infraestructure.Migrations.Configurations
 
             builder.HasOne(d => d.IdProductStockNavigation).WithMany(p => p.ProductHistories)
                 .HasForeignKey(d => d.IdProductStock)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_InventoryMaterial_MaterialStock");
         }
     }

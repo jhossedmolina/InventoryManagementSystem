@@ -2,9 +2,9 @@
 
 namespace InventoryManagementSystem.Core.Interfaces
 {
-    public interface IDocumentTypeRepository
+    public interface IDocumentTypeService
     {
-        Task<IEnumerable<DocumentType>> GetDocumentTypes();
+        IEnumerable<DocumentType> GetDocumentTypes();
         Task<DocumentType> GetDocumentType(int id);
         Task InsertDocumentType(DocumentType documentType);
         Task<bool> UpdateDocumentType(DocumentType documentType);
