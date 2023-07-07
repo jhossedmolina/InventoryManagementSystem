@@ -2,6 +2,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using InventoryManagementSystem.Core.DTOs;
 using InventoryManagementSystem.Core.Interfaces;
+using InventoryManagementSystem.Core.Services;
 using InventoryManagementSystem.Infraestructure.Migrations;
 using InventoryManagementSystem.Infraestructure.Repositories;
 using InventoryManagementSystem.Infraestructure.Validators;
@@ -19,6 +20,13 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddScoped<IDocumentTypeService, DocumentTypeService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IEmployeeUserService, EmployeeUserService>();
+builder.Services.AddScoped<IMunicipalityCountryService, MunicipalityCountryService>();
+builder.Services.AddScoped<IProductBrandService, ProductBrandService>();
+builder.Services.AddScoped<IRoleEmployeeService, RoleEmployeeService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
