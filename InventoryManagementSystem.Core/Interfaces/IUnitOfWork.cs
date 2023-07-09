@@ -9,9 +9,11 @@ namespace InventoryManagementSystem.Core.Interfaces
         IGenericRepository<Employee> EmployeeRepository { get; }
         IGenericRepository<EmployeeUser> EmployeeUserRepository { get; }
         IGenericRepository<MunicipalityCountry> MunicipalityCountryRepository { get; }
-        IGenericRepository <Order> OrderRepository { get; }
+        IGenericRepository<Order> OrderRepository { get; }
+        IGenericRepository<OrderDetail> OrderDetailRepository { get; }
         IGenericRepository<ProductBrand> ProductBrandRepository { get; }
         IGenericRepository<RoleEmployee> RoleEmployeeRepository { get; }
+        IGenericRepository<StatusEmployed> StatusEmployedRepository { get; }
         void SaveChanges();
         Task SaveChangesAsync();
     }

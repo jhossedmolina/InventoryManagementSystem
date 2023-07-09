@@ -29,10 +29,11 @@ namespace InventoryManagementSystem.Core.Services
 
         public async Task<bool> UpdateMunicipalityCountry(MunicipalityCountry municipalityCountry)
         {
-            var existingMunicipalityCountry = await _unitOfWork.MunicipalityCountryRepository.GetById(municipalityCountry.Id);
-            existingMunicipalityCountry.Code = municipalityCountry.Code;
-            existingMunicipalityCountry.Name = municipalityCountry.Name;
-            existingMunicipalityCountry.IdStateCountry = municipalityCountry.IdStateCountry;
+            var currentMunicipalityCountry = await _unitOfWork.MunicipalityCountryRepository.GetById(municipalityCountry.Id);
+            currentMunicipalityCountry.Code = municipalityCountry.Code;
+            currentMunicipalityCountry.Name = municipalityCountry.Name;
+            currentMunicipalityCountry.IdStateCountry = municipalityCountry.IdStateCountry;
+            _unitOfWork.MunicipalityCountryRepository.Update(currentMunicipalityCountry);
             await _unitOfWork.SaveChangesAsync();
             return true;
         }

@@ -29,10 +29,10 @@ namespace InventoryManagementSystem.Core.Services
 
         public async Task<bool> UpdateDocumentType(DocumentType documentType)
         {
-            var existingDocumentType = await _unitOfWork.DocumentTypeRepository.GetById(documentType.Id);
-            existingDocumentType.Code = documentType.Code;
-            existingDocumentType.Name = documentType.Name;
-            _unitOfWork.DocumentTypeRepository.Update(existingDocumentType);
+            var currentDocumentType = await _unitOfWork.DocumentTypeRepository.GetById(documentType.Id);
+            currentDocumentType.Code = documentType.Code;
+            currentDocumentType.Name = documentType.Name;
+            _unitOfWork.DocumentTypeRepository.Update(currentDocumentType);
             await _unitOfWork.SaveChangesAsync();
             return true;
         }

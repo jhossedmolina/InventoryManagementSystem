@@ -30,13 +30,13 @@ namespace InventoryManagementSystem.Core.Services
 
         public async Task<bool> UpdateEmployeeUSer(EmployeeUser employeeUser)
         {
-            var existingEmployeeUser = await _unitOfWork.EmployeeUserRepository.GetById(employeeUser.Id);
-            existingEmployeeUser.Username = employeeUser.Username;
-            existingEmployeeUser.Password = employeeUser.Password;
-            existingEmployeeUser.IdEmployee = employeeUser.IdEmployee;
-            existingEmployeeUser.IdRoleEmployee = employeeUser.IdRoleEmployee;
-            existingEmployeeUser.IdStatusEmployed = employeeUser.IdStatusEmployed;
-            _unitOfWork.EmployeeUserRepository.Update(existingEmployeeUser);
+            var currentEmployeeUser = await _unitOfWork.EmployeeUserRepository.GetById(employeeUser.Id);
+            currentEmployeeUser.Username = employeeUser.Username;
+            currentEmployeeUser.Password = employeeUser.Password;
+            currentEmployeeUser.IdEmployee = employeeUser.IdEmployee;
+            currentEmployeeUser.IdRoleEmployee = employeeUser.IdRoleEmployee;
+            currentEmployeeUser.IdStatusEmployed = employeeUser.IdStatusEmployed;
+            _unitOfWork.EmployeeUserRepository.Update(currentEmployeeUser);
             await _unitOfWork.SaveChangesAsync();
             return true;
         }

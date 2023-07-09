@@ -25,8 +25,11 @@ builder.Services.AddScoped<IDocumentTypeService, DocumentTypeService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IEmployeeUserService, EmployeeUserService>();
 builder.Services.AddScoped<IMunicipalityCountryService, MunicipalityCountryService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
 builder.Services.AddScoped<IProductBrandService, ProductBrandService>();
 builder.Services.AddScoped<IRoleEmployeeService, RoleEmployeeService>();
+builder.Services.AddScoped<IStatusEmployedService, StatusEmployedService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

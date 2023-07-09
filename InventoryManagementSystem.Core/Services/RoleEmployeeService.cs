@@ -30,10 +30,10 @@ namespace InventoryManagementSystem.Core.Services
 
         public async Task<bool> UpdateRoleEmployee(RoleEmployee roleEmployee)
         {
-            var existingRoleEmployee = await _unitOfWork.RoleEmployeeRepository.GetById(roleEmployee.Id);
-            existingRoleEmployee.Code = roleEmployee.Code;
-            existingRoleEmployee.Name = roleEmployee.Name;
-            _unitOfWork.RoleEmployeeRepository.Update(existingRoleEmployee);
+            var currentRoleEmployee = await _unitOfWork.RoleEmployeeRepository.GetById(roleEmployee.Id);
+            currentRoleEmployee.Code = roleEmployee.Code;
+            currentRoleEmployee.Name = roleEmployee.Name;
+            _unitOfWork.RoleEmployeeRepository.Update(currentRoleEmployee);
             await _unitOfWork.SaveChangesAsync();
             return true;
         }

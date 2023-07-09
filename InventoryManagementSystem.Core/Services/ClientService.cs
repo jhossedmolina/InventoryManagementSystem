@@ -29,15 +29,15 @@ namespace InventoryManagementSystem.Core.Services
 
         public async Task<bool> UpdateClient(Client client)
         {
-            var existingClient = await _unitOfWork.ClientRepository.GetById(client.Id);
-            existingClient.DocNumber = client.DocNumber;
-            existingClient.IdDocumentType = client.IdDocumentType;
-            existingClient.FirstName = client.FirstName;
-            existingClient.LastName = client.LastName;
-            existingClient.ContactNumber = client.ContactNumber;
-            existingClient.Address = client.Address;
-            existingClient.IdMunicipalityCountry = client.IdMunicipalityCountry;
-            _unitOfWork.ClientRepository.Update(existingClient);
+            var currentClient = await _unitOfWork.ClientRepository.GetById(client.Id);
+            currentClient.DocNumber = client.DocNumber;
+            currentClient.IdDocumentType = client.IdDocumentType;
+            currentClient.FirstName = client.FirstName;
+            currentClient.LastName = client.LastName;
+            currentClient.ContactNumber = client.ContactNumber;
+            currentClient.Address = client.Address;
+            currentClient.IdMunicipalityCountry = client.IdMunicipalityCountry;
+            _unitOfWork.ClientRepository.Update(currentClient);
             await _unitOfWork.SaveChangesAsync();
             return true;
         }

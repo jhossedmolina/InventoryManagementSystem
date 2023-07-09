@@ -30,10 +30,10 @@ namespace InventoryManagementSystem.Core.Services
 
         public async Task<bool> UpdateProductBrand(ProductBrand productBrand)
         {
-            var existingProductBrand = await _unitOfWork.ProductBrandRepository.GetById(productBrand.Id);
-            existingProductBrand.Name = productBrand.Name;
-            existingProductBrand.IdProductCategory = productBrand.IdProductCategory;
-            _unitOfWork.ProductBrandRepository.Update(existingProductBrand);
+            var currentProductBrand = await _unitOfWork.ProductBrandRepository.GetById(productBrand.Id);
+            currentProductBrand.Name = productBrand.Name;
+            currentProductBrand.IdProductCategory = productBrand.IdProductCategory;
+            _unitOfWork.ProductBrandRepository.Update(currentProductBrand);
             await _unitOfWork.SaveChangesAsync();
             return true;
         }
