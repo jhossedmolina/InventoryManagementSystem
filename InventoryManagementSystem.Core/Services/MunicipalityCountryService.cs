@@ -6,6 +6,7 @@ namespace InventoryManagementSystem.Core.Services
     public class MunicipalityCountryService : IMunicipalityCountryService
     {
         private readonly IUnitOfWork _unitOfWork;
+
         public MunicipalityCountryService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;

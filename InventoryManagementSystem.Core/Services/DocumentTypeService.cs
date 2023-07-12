@@ -6,6 +6,7 @@ namespace InventoryManagementSystem.Core.Services
     public class DocumentTypeService : IDocumentTypeService
     {
         private readonly IUnitOfWork _unitOfWork;
+
         public DocumentTypeService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;

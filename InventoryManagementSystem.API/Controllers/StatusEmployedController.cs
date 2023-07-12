@@ -12,6 +12,7 @@ namespace InventoryManagementSystem.API.Controllers
     {
         private readonly IStatusEmployedService _statusEmployedService;
         private readonly IMapper _mapper;
+
         public StatusEmployedController(IStatusEmployedService statusEmployedService, IMapper mapper)
         {
             _statusEmployedService = statusEmployedService;
@@ -29,7 +30,7 @@ namespace InventoryManagementSystem.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStatusEmployed(int id)
         {
-            var statusEmployed = _statusEmployedService.GetStatusEmployedById(id);
+            var statusEmployed = await _statusEmployedService.GetStatusEmployedById(id);
             var statusEmployedDto = _mapper.Map<StatusEmployedDto>(statusEmployed);
             return Ok(statusEmployedDto);
         }

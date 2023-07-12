@@ -6,6 +6,7 @@ namespace InventoryManagementSystem.Core.Services
     public class ClientService : IClientService
     {
         private readonly IUnitOfWork _unitOfWork;
+
         public ClientService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;

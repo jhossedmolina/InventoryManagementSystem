@@ -12,6 +12,7 @@ namespace InventoryManagementSystem.API.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly IMapper _mapper;
+
         public OrderController(IOrderService orderService, IMapper mapper)
         {
             _orderService = orderService;

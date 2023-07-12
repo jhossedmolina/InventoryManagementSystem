@@ -6,6 +6,7 @@ namespace InventoryManagementSystem.Core.Services
     public class StatusEmployedService : IStatusEmployedService
     {
         private readonly IUnitOfWork _unitOfWork;
+
         public StatusEmployedService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork; 
